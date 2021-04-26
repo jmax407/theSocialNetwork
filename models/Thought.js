@@ -16,9 +16,8 @@ const ReactionSchema = new Schema(
 
         },
         username:{
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'User'
+            type: String,
+            required: true
         },
         createdAt: {
             type: Date,
@@ -28,7 +27,6 @@ const ReactionSchema = new Schema(
     },
     {
       toJSON: {
-        virtuals: true,
         getters: true
       },
       id: false
@@ -45,11 +43,11 @@ const ThoughtSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now
-            // get: createdAtVal => dateFormat(createdAtVal)
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
           },
         username:{
-          type: Schema.Types.ObjectId,
+          type: String,
           ref: 'User'
         },
         // use ReactionSchema
